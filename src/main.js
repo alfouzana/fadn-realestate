@@ -52,7 +52,29 @@ form.addEventListener("submit", (e) => {
     form.querySelector("[data-err]:not(.hidden)")?.scrollIntoView({ behavior: "smooth", block: "center" });
     return;
   }
-  // preview: delivery of requests (email / sheet) is connected in the full build
+  const rooms = val("الغرف") === "other" ? $("roomsOther").value.trim() : val("الغرف");
+  const rent = val("نوع الطلب") === "إيجار";
+  const duration = $("duration").value === "other" ? $("durationOther").value.trim() : $("duration").value;
+  const rentType = val("نوع الإيجار") === "other" ? $("rentTypeOther").value.trim() || "غير ذلك" : val("نوع الإيجار");
+  const lines = [
+    "طلب عقاري جديد - فدن العقارية",
+    "",
+    ["الاسم", $("name").value.trim()],
+    ["الجنس", val("الجنس")],
+    ["الجوال", phone],
+    ["المنطقة", val("المنطقة")],
+    ["المدينة", val("المدينة")],
+    ["الحي", $("district").value.trim()],
+    ["نوع الطلب", val("نوع الطلب")],
+    ["عدد الغرف", rooms],
+    rent && ["مدة الإيجار", duration],
+    rent && ["التأثيث", val("التأثيث")],
+    rent && ["نوع الإيجار", rentType],
+    ["متطلبات أخرى", $("notes").value.trim()],
+  ]
+    .filter((l) => typeof l === "string" || (l && l[1]))
+    .map((l) => (typeof l === "string" ? l : `${l[0]}: ${l[1]}`));
+  window.open(`https://wa.me/966538602877?text=${encodeURIComponent(lines.join("\n"))}`, "_blank");
   show(form, false);
   show($("thanks"), true);
   $("thanks").scrollIntoView({ behavior: "smooth", block: "center" });
