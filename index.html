@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>فدن العقارية | نساعدك في العثور على العقار المناسب</title>
+    <meta name="description" content="فدن العقارية للتسويق العقاري في الرياض والمنطقة الشرقية. سجّل طلبك للتمليك أو الإيجار وسنتواصل معك عند توفر العقار المناسب." />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <header class="border-b border-slate-100 bg-white">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <a href="#" class="flex items-center gap-3">
+          <img src="./favicon.svg" alt="شعار فدن العقارية" class="h-10 w-10" />
+          <span class="text-xl font-bold text-brand">فدن العقارية</span>
+        </a>
+        <a href="#request" class="rounded-full bg-brand px-5 py-2 text-sm font-semibold text-white hover:bg-brand-dark">سجّل طلبك</a>
+      </div>
+    </header>
+
+    <section class="relative overflow-hidden bg-brand text-white">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=70" alt="" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+      <div class="absolute inset-0 bg-gradient-to-b from-brand/70 to-brand"></div>
+      <div class="relative mx-auto max-w-3xl px-4 pt-16 pb-36 text-center md:pt-24">
+        <p class="mb-4 inline-block rounded-full bg-white/10 px-4 py-1 text-sm text-gold">تمليك وإيجار في الرياض والمنطقة الشرقية</p>
+        <h1 class="text-3xl font-bold leading-snug md:text-5xl md:leading-tight">نساعدك في العثور على العقار المناسب لاحتياجك</h1>
+        <p class="mx-auto mt-5 max-w-xl text-lg text-white/80">أخبرنا بما تبحث عنه في دقيقة واحدة، وسنتواصل معك عند توفر العقار الذي يناسبك.</p>
+      </div>
+    </section>
+
+    <main id="request" class="relative z-10 mx-auto -mt-24 max-w-3xl px-4 pb-20">
+      <form id="leadForm" class="rounded-3xl bg-white p-6 shadow-xl shadow-slate-200/70 md:p-10" novalidate>
+        <h2 class="text-2xl font-bold">نموذج الطلب العقاري</h2>
+        <p class="mt-1 text-slate-500">الحقول المعلّمة بـ <span class="text-red-500">*</span> إلزامية</p>
+
+        <fieldset class="mt-8 space-y-5">
+          <legend class="mb-4 flex items-center gap-3 text-lg font-bold"><span class="step">1</span>البيانات الأساسية</legend>
+          <div>
+            <label class="label" for="name">الاسم الكامل</label>
+            <input id="name" name="الاسم" class="field" placeholder="مثال: محمد عبدالله" autocomplete="name" />
+          </div>
+          <div>
+            <span class="label">الجنس</span>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="chip"><input type="radio" name="الجنس" value="ذكر" /><span>ذكر</span></label>
+              <label class="chip"><input type="radio" name="الجنس" value="أنثى" /><span>أنثى</span></label>
+            </div>
+          </div>
+          <div>
+            <label class="label" for="phone">رقم الجوال <span class="text-red-500">*</span></label>
+            <input id="phone" name="الجوال" type="tel" inputmode="tel" dir="ltr" class="field text-right" placeholder="05XXXXXXXX" autocomplete="tel" required />
+            <p class="mt-1 hidden text-sm text-red-500" data-err="phone">يرجى إدخال رقم جوال صحيح يبدأ بـ 05</p>
+          </div>
+        </fieldset>
+
+        <fieldset class="mt-10 space-y-5">
+          <legend class="mb-4 flex items-center gap-3 text-lg font-bold"><span class="step">2</span>المدينة أو المنطقة المطلوبة <span class="text-red-500">*</span></legend>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="chip"><input type="radio" name="المنطقة" value="المنطقة الشرقية" /><span>المنطقة الشرقية</span></label>
+            <label class="chip"><input type="radio" name="المنطقة" value="الرياض" /><span>مدينة الرياض</span></label>
+          </div>
+          <p class="hidden text-sm text-red-500" data-err="region">يرجى اختيار المنطقة</p>
+          <div id="eastCities" class="hidden">
+            <span class="label">اختر المدينة</span>
+            <div class="grid grid-cols-3 gap-3">
+              <label class="chip"><input type="radio" name="المدينة" value="الخبر" /><span>الخبر</span></label>
+              <label class="chip"><input type="radio" name="المدينة" value="الدمام" /><span>الدمام</span></label>
+              <label class="chip"><input type="radio" name="المدينة" value="الظهران" /><span>الظهران</span></label>
+            </div>
+          </div>
+          <div>
+            <label class="label" for="district">الحي المطلوب</label>
+            <input id="district" name="الحي" class="field" list="districts" placeholder="اختر من القائمة أو اكتب اسم الحي" />
+            <datalist id="districts"></datalist>
+          </div>
+        </fieldset>
+
+        <fieldset class="mt-10 space-y-5">
+          <legend class="mb-4 flex items-center gap-3 text-lg font-bold"><span class="step">3</span>نوع الطلب وعدد الغرف <span class="text-red-500">*</span></legend>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="chip"><input type="radio" name="نوع الطلب" value="تمليك" /><span>تمليك</span></label>
+            <label class="chip"><input type="radio" name="نوع الطلب" value="إيجار" /><span>إيجار</span></label>
+          </div>
+          <p class="hidden text-sm text-red-500" data-err="type">يرجى اختيار نوع الطلب</p>
+          <div>
+            <span class="label">عدد الغرف</span>
+            <div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
+              <label class="chip"><input type="radio" name="الغرف" value="1" /><span>1</span></label>
+              <label class="chip"><input type="radio" name="الغرف" value="2" /><span>2</span></label>
+              <label class="chip"><input type="radio" name="الغرف" value="3" /><span>3</span></label>
+              <label class="chip"><input type="radio" name="الغرف" value="4" /><span>4</span></label>
+              <label class="chip"><input type="radio" name="الغرف" value="5" /><span>5</span></label>
+              <label class="chip"><input type="radio" name="الغرف" value="other" /><span>عدد آخر</span></label>
+            </div>
+            <input id="roomsOther" type="number" min="1" max="30" class="field mt-3 hidden" placeholder="اكتب عدد الغرف المطلوب" />
+          </div>
+        </fieldset>
+
+        <fieldset id="rentBox" class="mt-10 hidden space-y-5 rounded-2xl border border-gold/40 bg-gold/5 p-5">
+          <legend class="flex items-center gap-3 px-2 text-lg font-bold"><span class="step">4</span>تفاصيل الإيجار</legend>
+          <div>
+            <label class="label" for="duration">مدة الإيجار المتوقعة</label>
+            <select id="duration" name="مدة الإيجار" class="field">
+              <option value="">اختر المدة</option>
+              <option>شهر</option>
+              <option>شهران</option>
+              <option>3 أشهر</option>
+              <option>6 أشهر</option>
+              <option>سنة</option>
+              <option value="other">مدة أخرى</option>
+            </select>
+            <input id="durationOther" class="field mt-3 hidden" placeholder="اكتب المدة المطلوبة" />
+          </div>
+          <div>
+            <span class="label">التأثيث</span>
+            <div class="grid grid-cols-3 gap-3">
+              <label class="chip"><input type="radio" name="التأثيث" value="مفروش" /><span>مفروش</span></label>
+              <label class="chip"><input type="radio" name="التأثيث" value="غير مفروش" /><span>غير مفروش</span></label>
+              <label class="chip"><input type="radio" name="التأثيث" value="لا يشترط" /><span>لا يشترط</span></label>
+            </div>
+          </div>
+          <div>
+            <span class="label">نوع الإيجار</span>
+            <div class="grid grid-cols-3 gap-3">
+              <label class="chip"><input type="radio" name="نوع الإيجار" value="عادي" /><span>عادي</span></label>
+              <label class="chip"><input type="radio" name="نوع الإيجار" value="من الباطن" /><span>من الباطن</span></label>
+              <label class="chip"><input type="radio" name="نوع الإيجار" value="other" /><span>غير ذلك</span></label>
+            </div>
+            <input id="rentTypeOther" class="field mt-3 hidden" placeholder="وضّح نوع الإيجار" />
+          </div>
+        </fieldset>
+
+        <fieldset class="mt-10">
+          <label class="label text-lg" for="notes">هل لديك متطلبات أخرى؟</label>
+          <textarea id="notes" name="ملاحظات" rows="4" class="field placeholder:text-slate-400" placeholder="اكتب أي تفاصيل إضافية تساعدنا في توفير العقار المناسب لك، مثل ميزانيتك، أو حي محدد، أو رغبتك في التأجير من الباطن، أو أي شروط أخرى"></textarea>
+        </fieldset>
+
+        <button type="submit" class="mt-8 w-full rounded-2xl bg-brand py-4 text-lg font-bold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark">إرسال الطلب العقاري</button>
+      </form>
+
+      <div id="thanks" class="hidden rounded-3xl bg-white p-10 text-center shadow-xl shadow-slate-200/70">
+        <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-brand/10 text-3xl text-brand">✓</div>
+        <h2 class="text-2xl font-bold">تم استلام طلبك</h2>
+        <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-slate-600">شكرًا لثقتك بفدن العقارية، تم استلام طلبك، وسيتم التواصل معك عند توفر العقار المناسب لاحتياجك.</p>
+        <button type="button" id="again" class="mt-8 rounded-full border border-slate-300 px-6 py-2 font-semibold hover:bg-slate-50">إرسال طلب آخر</button>
+      </div>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white py-8 text-center text-sm text-slate-500">
+      © <span data-year></span> فدن العقارية. جميع الحقوق محفوظة.
+    </footer>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

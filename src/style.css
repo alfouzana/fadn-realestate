@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #0f4c4a;
+  --color-brand-dark: #0a3634;
+  --color-gold: #c9a14a;
+  --font-sans: "IBM Plex Sans Arabic", "Tajawal", ui-sans-serif, system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+.field { @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/15; }
+.label { @apply mb-2 block text-sm font-semibold text-slate-700; }
+.chip input { @apply sr-only; }
+.chip span { @apply flex cursor-pointer items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition select-none hover:border-brand/50; }
+.chip input:checked + span { @apply border-brand bg-brand text-white; }
+.chip input:focus-visible + span { @apply ring-2 ring-brand/30; }
+.step { @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand/10 text-sm font-bold text-brand; }
